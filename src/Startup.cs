@@ -43,14 +43,17 @@ namespace Company.WebApplication1
                 options.Cookie.IsEssential = true;
             });
 
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                    options.UseInMemoryDatabase("memory1"));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(config =>
             {
                 config.User.RequireUniqueEmail = true;    // уникальный email
                 config.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -._@+"; 
                 config.SignIn.RequireConfirmedEmail = false;
+                config.Password.RequireNonAlphanumeric = false;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();

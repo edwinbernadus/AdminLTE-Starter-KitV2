@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Company.WebApplication1.Data
 {
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -21,5 +22,7 @@ namespace Company.WebApplication1.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<Student> Students { get; set; }
     }
 }

@@ -60,6 +60,12 @@ namespace Company.WebApplication1.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
             ReturnUrl = returnUrl;
+
+            this.Input = this.Input ?? new InputModel();
+            this.Input.Email = "user@example.com";
+            this.Input.Password = "Password123";
+
+
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)

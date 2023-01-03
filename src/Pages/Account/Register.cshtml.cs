@@ -68,6 +68,11 @@ namespace Company.WebApplication1.Pages.Account
 
         public void OnGet(string returnUrl = null)
         {
+            this.Input = this.Input ?? new InputModel();
+            this.Input.FullName = "John Doe";
+            this.Input.Email = "user@example.com";
+            this.Input.Password = "Password123";
+            this.Input.ConfirmPassword = "Password123";
             ReturnUrl = returnUrl;
         }
 
